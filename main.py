@@ -181,7 +181,7 @@ def main():
 
             with st.beta_expander("Histogram"):
                 col = st.selectbox("Select a numeric column", df.columns.to_list())
-                no_bins = st.number_input("Insert a Number", min_value= 1, value = 10, step=1)
+                no_bins = st.number_input("Insert number of bins", min_value= 1, value = 10, step=1)
                 p1 = px.histogram(df, x = col, nbins= no_bins)
                 st.plotly_chart(p1)
 
