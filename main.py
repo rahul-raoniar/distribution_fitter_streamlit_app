@@ -18,14 +18,16 @@ html_temp = """
 
 desc_temp = """
 			### Continuous Distribution Fitter App
-			This app helps you to identify the best distribution that fits your data.
+			This app helps you to identify the best distributions that fits your data.
 			#### Datasource
 				- https://github.com/cokelaer/fitter
 			#### App Content
-				- Home (Introduction)
-				- EDA Section: Exploratory Data Analysis of Data
-				- Distribution Fitting
-				- ML Section: ML Predictor App
+				- Home: Basic Information
+				- EDA Section: Exploratory Data Analysis
+				- Distribution Fitting: Fitting distribution
+							- Fitting Common Distributions
+							- Fitting Distributions by Manual Selection
+				- About: About the App
 
 			"""
 
