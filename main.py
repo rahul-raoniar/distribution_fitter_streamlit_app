@@ -11,13 +11,13 @@ import pandas as pd
 
 html_temp = """
 		<div style="background-color:#3872fb;padding:10px;border-radius:10px">
-		<h1 style="color:white;text-align:center;">Distribution Fitting Web App </h1>
+		<h1 style="color:white;text-align:center;">Distribution Fitter Web App </h1>
 		<h4 style="color:white;text-align:center;">Fitter Library </h4>
 		</div>
 		"""
 
 desc_temp = """
-			### Continuous Distribution Fitting App
+			### Continuous Distribution Fitter App
 			This app helps you to identify the best distribution that fits your data.
 			#### Datasource
 				- https://github.com/cokelaer/fitter
