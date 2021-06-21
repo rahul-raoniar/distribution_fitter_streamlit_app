@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
+# HTML styling
 html_temp = """
 		<div style="background-color:#3872fb;padding:10px;border-radius:10px">
 		<h1 style="color:white;text-align:center;">Distribution Fitter Web App </h1>
