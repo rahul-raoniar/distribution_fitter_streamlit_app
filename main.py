@@ -154,7 +154,7 @@ def main():
 
 
             submenu = st.sidebar.selectbox("Submenu",
-                                      ["Descriptive", "Plots"])
+                                      ["Descriptive", "Plot"])
 
             if submenu == "Descriptive":
                 st.header("Descriptive stats")
@@ -167,7 +167,7 @@ def main():
 
 
             else:
-                st.header("Plots")
+                st.header("Plot")
                 with st.beta_expander("Histogram"):
 
                         col = st.selectbox("Select a numeric column", df.columns.to_list())
