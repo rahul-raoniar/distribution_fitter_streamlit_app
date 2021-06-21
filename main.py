@@ -126,15 +126,6 @@ about_text = """
 			The about section provides a breif description of the application's functionality.  
 
 			"""
-			
-			#### <span style="color:blue">App Content</span>
-
-            #
-            #
-            #   About
-            #
-			#
-			# """
 
 
 def load_data():
