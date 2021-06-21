@@ -67,7 +67,7 @@ desc_temp = """
 			"""
 
 about_text = """
-			### <span style="color:red">**About Continuous Distribution Fitter Application**</span>
+			### <span style="color:blue">**About Continuous Distribution Fitter Application**</span>
 			
 			   The distribution fitter application will help you compare multiple distributions and 
 			   find the best one that fits your data. The application comprised of four sections described as follows:
