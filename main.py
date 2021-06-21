@@ -12,7 +12,7 @@ import pandas as pd
 html_temp = """
 		<div style="background-color:#3872fb;padding:10px;border-radius:10px">
 		<h1 style="color:white;text-align:center;">Distribution Fitter Web App </h1>
-		<h4 style="color:white;text-align:center;">Fitter Library </h4>
+		<h4 style="color:white;text-align:center;">App Developed by Rahul Raoniar </h4>
 		</div>
 		"""
 
