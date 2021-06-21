@@ -145,7 +145,7 @@ def main():
 
 
     elif choice == "EDA":
-        st.subheader("EDA")
+        st.header("EDA")
         data_file = load_data()
         if data_file is not None:
             df = pd.read_csv(data_file)
@@ -157,7 +157,7 @@ def main():
                                       ["Descriptive", "Plots"])
 
             if submenu == "Descriptive":
-                st.subheader("Descriptive stats")
+                st.header("Descriptive stats")
 
                 with st.beta_expander("Data Types"):
                         st.dataframe(df.dtypes)
@@ -167,7 +167,7 @@ def main():
 
 
             else:
-                st.subheader("Plots")
+                st.header("Plots")
                 with st.beta_expander("Histogram"):
 
                         col = st.selectbox("Select a numeric column", df.columns.to_list())
@@ -176,7 +176,7 @@ def main():
                         st.plotly_chart(p1)
 
     elif choice == "DistFitting":
-        st.subheader("DistFitting")
+        st.header("DistFitting")
         data_file = load_data()
         if data_file is not None:
             df = pd.read_csv(data_file)
@@ -220,7 +220,7 @@ def main():
 
 
     else:
-        st.subheader("About")
+        st.header("About")
         st.markdown(about_text, unsafe_allow_html=True)
 
 
