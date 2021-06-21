@@ -84,30 +84,44 @@ def main():
     elif choice == "DistFitting":
         st.subheader("DistFitting")
 
-        task = st.selectbox("Select Type of Fitting", ["Fit common distributions", "Fit selected distributions"])
+        task = st.selectbox("Select Type of Distribution Fitting", ["Fit common distributions", "Fit selected distributions"])
 
         if task == "Fit common distributions":
             col = st.selectbox("Select a numeric column", df.columns.to_list())
-            data = df[col].values
-            f = Fitter(data,
-                       distributions = get_common_distributions())
-            fig, ax = plt.subplots()
-            f.fit()
-            st.dataframe(f.summary())
+            selection = st.selectbox("Best Fitted Distribution Parameter Selection Criteria", ["sumsquare_error", "aic", "bic"])
 
-            st.pyplot(fig)
+            if st.button("Process"):
+                st.success("Top Five Distribution Summary")
+                data = df[col].values
+                f = Fitter(data,
+                           distributions = get_common_distributions())
+                fig, ax = plt.subplots()
+                f.fit()
+                st.dataframe(f.summary())
+                st.success("Fitted Distribution Plot")
+                st.pyplot(fig)
+
+                st.success(f"Best Distribution Parameters Based on {selection} Sorting Criteria")
+                st.write(f.get_best(method = selection))
 
         else:
             dists = st.multiselect("Select multiple distribution", get_distributions())
             col = st.selectbox("Select a numeric column", df.columns.to_list())
-            f = Fitter(df[col],
-                       distributions=dists)
-            f.fit()
-            fig, ax = plt.subplots()
-            f.fit()
-            st.dataframe(f.summary())
+            selection = st.selectbox("Best Fitted Distribution Parameter Selection Criteria", ["sumsquare_error", "aic", "bic"])
+            if st.button("Process"):
+                st.success("Top Five Distribution Summary")
+                f = Fitter(df[col],
+                           distributions=dists)
+                f.fit()
+                fig, ax = plt.subplots()
+                f.fit()
+                st.dataframe(f.summary())
+                st.success("Fitted Distribution Plot")
+                st.pyplot(fig)
 
-            st.pyplot(fig)
+                st.success(f"Best Distribution Parameters Based on {selection} Sorting Criteria")
+                st.write(f.get_best(method = selection))
+
 
 
 
