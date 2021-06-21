@@ -32,18 +32,11 @@ desc_temp = """
 
 			"""
 
-"""
-This function load csv data from streamlit app input
-"""
 
 def load_data():
     data_file = st.file_uploader("Upload a CSV", type=["csv"])
     return data_file
 
-
-"""
-Main function contains all the functions
-"""
 
 def main():
     stc.html(html_temp)
