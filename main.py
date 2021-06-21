@@ -17,7 +17,7 @@ html_temp = """
 
 desc_temp = """
 			### Continuous Distribution Fitter App
-			This app helps you to identify the best distributions that fits your data.
+			Compare multiple distributions and find the best that fits your data.
 			#### Fitter Library
 				- https://github.com/cokelaer/fitter
 			#### App Content
