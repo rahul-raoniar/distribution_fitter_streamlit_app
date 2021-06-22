@@ -21,14 +21,14 @@ desc_temp = """
 			 #### <span style="color:blue">**App Content** 📑</span>
 			 The Application comprised of four sections described as follows: 
 			 
-				  1. Home: Basic Information
-				  2. EDA Section: Exploratory Data Analysis
-							    - Descriptive Statistics
-							    - Histogram Plotting (using Plotly)
-				  3. Distribution Fitting: Fitting distribution using Fitter Python Library
-							    - Fitting Common Distributions
-							    - Fitting Distributions by Manual Selection
-				  4. About: About the Application
+			1. <span style="color:lightcoral">**Home** 🏡</span>: Basic Information
+			2. <span style="color:lightcoral">**EDA Section**</span> 🧮: Exploratory Data Analysis
+			    * Descriptive Statistics
+				* Histogram Plotting (using Plotly)
+			3. <span style="color:lightcoral">**Distribution Fitting**</span> 🌈: Fitting distribution using Fitter Python Library
+			    * Fitting Common Distributions
+				* Fitting Distributions by Manual Selection
+			4. <span style="color:lightcoral">**About**</span> 📑: About the Application
 				  
 			### <span style="color:blue">**Purpose of Ditribution Fitter Web Application** 💡</span> 
 			Hi! i'm **```Rahul Raoniar```**. I’m a transportation researcher 🧪 and my speciality is pedestrian safety 🚶‍.
