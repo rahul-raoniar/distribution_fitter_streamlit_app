@@ -212,7 +212,7 @@ def main():
                             st.success("Fitted Distribution Plot")
                             st.pyplot(fig)
 
-                            st.success(f"Best Distribution Parameters Based on {selection} Sorting Criteria")
+                            st.success(f"Best Fitted Distribution and Parameters Based on {selection} Sorting Criteria")
                             st.dataframe(f.get_best(method = selection))
                             best_name = f.get_best(method = selection)
                             key_name = list(best_name.keys())
@@ -238,7 +238,7 @@ def main():
                             st.success("Fitted Distribution Plot")
                             st.pyplot(fig)
 
-                            st.success(f"Best Distribution Parameters Based on {selection} Sorting Criteria")
+                            st.success(f"Best Fitted Distribution and Parameters Based on {selection} Sorting Criteria")
                             st.dataframe(f.get_best(method = selection))
                             best_name = f.get_best(method = selection)
                             key_name = list(best_name.keys())
