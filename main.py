@@ -17,7 +17,20 @@ html_temp = """
 
 # Home page
 desc_temp = """
-			### <span style="color:blue">**Purpose of Ditribution Fitter Web Application 💡**</span> 
+
+			 #### <span style="color:blue">**App Content** 📑</span>
+			 The Application comprised of four sections described as follows: 
+			 
+				  1. Home: Basic Information
+				  2. EDA Section: Exploratory Data Analysis
+							    - Descriptive Statistics
+							    - Histogram Plotting (using Plotly)
+				  3. Distribution Fitting: Fitting distribution using Fitter Python Library
+							    - Fitting Common Distributions
+							    - Fitting Distributions by Manual Selection
+				  4. About: About the Application
+				  
+			### <span style="color:blue">**Purpose of Ditribution Fitter Web Application** 💡</span> 
 			Hi! i'm **```Rahul Raoniar```**. I’m a transportation researcher 🧪 and my speciality is pedestrian safety 🚶‍.
 			 For that reason, I’m very fortunate that I get to work with lots of data every day. As a pedestrian safety
 			  researcher, I often work with pedestrian crossing speed (average speed maintained by pedestrians while
@@ -53,17 +66,7 @@ desc_temp = """
 				   
 			[Fitter Library Github Page Link](https://github.com/cokelaer/fitter) 
 			
-			 #### <span style="color:blue">App Content 📑</span>
-			 The Application comprised of four sections described as follows: 
-			 
-				  1. Home: Basic Information
-				  2. EDA Section: Exploratory Data Analysis
-							    - Descriptive Statistics
-							    - Histogram Plotting (using Plotly)
-				  3. Distribution Fitting: Fitting distribution using Fitter Python Library
-							    - Fitting Common Distributions
-							    - Fitting Distributions by Manual Selection
-				  4. About: About the Application
+
 
 			"""
 
