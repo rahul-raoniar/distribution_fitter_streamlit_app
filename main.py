@@ -139,11 +139,12 @@ def load_data():
     return data_file
 
 
-def progress_bar():
-    pro = st.progress(0)
-    for percent_complete  in range(100):
-        time.sleep(0.1)
-        pro.progress(percent_complete + 1)
+# def progress_bar(sleep_val = 0.1):
+#     pro = st.progress(0)
+#     for percent_complete  in range(100):
+#         time.sleep(sleep_val)
+#         pro.empty()
+#         pro.progress(percent_complete + 1)
 
 
 
@@ -197,49 +198,55 @@ def main():
                 selection = st.selectbox("Best Fitted Distribution Parameter Selection Criteria", ["sumsquare_error", "aic", "bic"])
 
                 if st.button("Process"):
-                    progress_bar()
-                    st.success("Top Five Distribution Summary")
-                    data = df[col].values
-                    f = Fitter(data,
-                               distributions = get_common_distributions())
-                    fig, ax = plt.subplots()
-                    f.fit()
-                    st.dataframe(f.summary())
-                    st.success("Fitted Distribution Plot")
-                    st.pyplot(fig)
+                    with st.spinner('Wait for it... ⏳'):
+                        time.sleep(5)
+                        with st.spinner('Almost done... 👏👏'):
+                            time.sleep(2)
+                            st.success("Top Five Distribution Summary")
+                            data = df[col].values
+                            f = Fitter(data,
+                                       distributions = get_common_distributions())
+                            fig, ax = plt.subplots()
+                            f.fit()
+                            st.dataframe(f.summary())
+                            st.success("Fitted Distribution Plot")
+                            st.pyplot(fig)
 
-                    st.success(f"Best Distribution Parameters Based on {selection} Sorting Criteria")
-                    st.dataframe(f.get_best(method = selection))
-                    best_name = f.get_best(method = selection)
-                    key_name = list(best_name.keys())
-                    key_list = ' '.join([str(element) for element in key_name])
-                    st.success(f"For More Information on {key_list} Distribution Parameters Visit Scipy Documentation")
-                    st.markdown(f"[Scipy's {key_list} Distribution Documentation Link](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.{key_list}.html)", unsafe_allow_html=True)
+                            st.success(f"Best Distribution Parameters Based on {selection} Sorting Criteria")
+                            st.dataframe(f.get_best(method = selection))
+                            best_name = f.get_best(method = selection)
+                            key_name = list(best_name.keys())
+                            key_list = ' '.join([str(element) for element in key_name])
+                            st.success(f"For More Information on {key_list} Distribution Parameters Visit Scipy Documentation")
+                            st.markdown(f"[Scipy's {key_list} Distribution Documentation Link](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.{key_list}.html)", unsafe_allow_html=True)
 
             else:
                 dists = st.multiselect("Select One or More Distributions", get_distributions())
                 col = st.selectbox("Select a Numeric Column", df.columns.to_list())
                 selection = st.selectbox("Best Fitted Distribution Parameter Selection Criteria", ["sumsquare_error", "aic", "bic"])
                 if st.button("Process"):
-                    progress_bar()
-                    st.success("Top Distributions' Summary")
-                    f = Fitter(df[col], distributions = dists)
-                    f.fit()
-                    fig, ax = plt.subplots()
-                    f.fit()
-                    st.dataframe(f.summary())
-                    st.success("Fitted Distribution Plot")
-                    st.pyplot(fig)
+                    with st.spinner('Wait for it... ⏳'):
+                        time.sleep(5)
+                        with st.spinner('Almost done... 👏👏'):
+                            time.sleep(5)
+                            st.success("Top Distributions' Summary")
+                            f = Fitter(df[col], distributions = dists)
+                            f.fit()
+                            fig, ax = plt.subplots()
+                            f.fit()
+                            st.dataframe(f.summary())
+                            st.success("Fitted Distribution Plot")
+                            st.pyplot(fig)
 
-                    st.success(f"Best Distribution Parameters Based on {selection} Sorting Criteria")
-                    st.dataframe(f.get_best(method = selection))
-                    best_name = f.get_best(method = selection)
-                    key_name = list(best_name.keys())
-                    key_list = ' '.join([str(element) for element in key_name])
-                    st.success(f"For More Information on {key_list} Distribution Parameters Visit Scipy Documentation")
-                    st.markdown(
-                        f"[Scipy's {key_list} Distribution Documentation Link](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.{key_list}.html)",
-                        unsafe_allow_html=True)
+                            st.success(f"Best Distribution Parameters Based on {selection} Sorting Criteria")
+                            st.dataframe(f.get_best(method = selection))
+                            best_name = f.get_best(method = selection)
+                            key_name = list(best_name.keys())
+                            key_list = ' '.join([str(element) for element in key_name])
+                            st.success(f"For More Information on {key_list} Distribution Parameters Visit Scipy Documentation")
+                            st.markdown(
+                                f"[Scipy's {key_list} Distribution Documentation Link](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.{key_list}.html)",
+                                unsafe_allow_html=True)
 
 
     else:
