@@ -19,7 +19,8 @@ html_temp = """
 desc_temp = """
 
 			 #### <span style="color:blue">**App Content** 📑</span>
-			 The Application comprised of four sections described as follows: 
+			 The distribution fitter application will help you compare multiple distributions and 
+			   find the best one that fits your data. The application comprised of four sections described as follows: 
 			 
 			1. <span style="color:lightcoral">**Home** 🏡</span>: Basic Information
 			2. <span style="color:lightcoral">**Exploratory Data Analysis**</span> 🧮: Exploratory Data Analysis
@@ -85,15 +86,14 @@ about_text = """
 				   Github Page: https://github.com/cokelaer/fitter
 			
 			 #### <span style="color:blue">2. Exploratory Data Analysis</span>
-			 The ```Exploratory Data Analysis``` part comprised of two sections, ```Exploratory Analysis``` and ```Visualization```
-			 of overall distribution of observations.
+			 The ```Exploratory Data Analysis``` section comprised of two subsections, ```Descriptive Stats``` and ```Visualization```.
 			 
-			 **```1. Exploratory Analysis :```** An exploratory analysis part has been added to check the data types and basic
+			 **```1. Descriptive Stats :```** A descriptive statistical analysis part has been added to check the data types and basic
 			 statistics to get overall idea about the data.
 			 
 			 
-			 **```2. Plot Visualization :```**
-			 Before you start fitting various distribution it is often recommended to plot a histogram, which help you understand overall
+			 **```2. Visualization :```**
+			 Before you start fitting various distributions it is often recommended to plot a histogram, which will help you understand overall
 			 distribution your data follows. This will bring down the number of distributions you might need for comparision which
 			  eventually save you time.
 			 
@@ -103,7 +103,7 @@ about_text = """
 			  manually selected distributions, call the fit function for you, ignoring those that fail or run forever and finally
 			  give you a summary of the best distributions in the sense of sum of the square errors.  
 			  
-			  In this section two separate distribution fitting methods have been deployed.  
+			  In this section two separate distribution fitting methods has been deployed which are described as follows:  
 			  
 			  **```1. Fit Common Distributions :```** You can select ```Fit Common Distributions``` from the drop down menu which will fit
 			    ten common distributions provided by the  ```get_common_distributions( )``` function. The ten common distributions are
