@@ -5,6 +5,7 @@ import plotly.express as px
 from fitter import Fitter, get_common_distributions, get_distributions
 import matplotlib.pyplot as plt
 import pandas as pd
+import time
 
 
 # HTML styling
@@ -138,16 +139,22 @@ def load_data():
     return data_file
 
 
+def progress_bar():
+    pro = st.progress(0)
+    for percent_complete  in range(100):
+        time.sleep(0.1)
+        pro.progress(percent_complete + 1)
+
+
+
 def main():
     stc.html(html_temp)
     menu = ["Home", "Exploratory Data Analysis", "Distribution Fitting", "About"]
     choice = st.sidebar.selectbox("Menu", menu)
 
-
     if choice == "Home":
         st.header("Home")
         st.markdown(desc_temp, unsafe_allow_html=True)
-
 
     elif choice == "Exploratory Data Analysis":
         st.header("Exploratory Data Analysis")
@@ -156,7 +163,6 @@ def main():
             df = pd.read_csv(data_file)
             st.write(f"The file contains {df.shape[0]} rows and {df.shape[1]} columns")
             st.dataframe(df)
-
 
             submenu = st.sidebar.selectbox("Submenu",
                                       ["Descriptive Stats", "Visualization"])
@@ -169,7 +175,6 @@ def main():
 
                 with st.beta_expander("Descriptive Summary"):
                         st.dataframe(df.describe())
-
 
             else:
                 st.header("Visualization")
@@ -192,6 +197,7 @@ def main():
                 selection = st.selectbox("Best Fitted Distribution Parameter Selection Criteria", ["sumsquare_error", "aic", "bic"])
 
                 if st.button("Process"):
+                    progress_bar()
                     st.success("Top Five Distribution Summary")
                     data = df[col].values
                     f = Fitter(data,
@@ -215,9 +221,9 @@ def main():
                 col = st.selectbox("Select a Numeric Column", df.columns.to_list())
                 selection = st.selectbox("Best Fitted Distribution Parameter Selection Criteria", ["sumsquare_error", "aic", "bic"])
                 if st.button("Process"):
+                    progress_bar()
                     st.success("Top Distributions' Summary")
-                    f = Fitter(df[col],
-                               distributions=dists)
+                    f = Fitter(df[col], distributions = dists)
                     f.fit()
                     fig, ax = plt.subplots()
                     f.fit()
@@ -227,7 +233,7 @@ def main():
 
                     st.success(f"Best Distribution Parameters Based on {selection} Sorting Criteria")
                     st.dataframe(f.get_best(method = selection))
-                    best_name = f.get_best(method=selection)
+                    best_name = f.get_best(method = selection)
                     key_name = list(best_name.keys())
                     key_list = ' '.join([str(element) for element in key_name])
                     st.success(f"For More Information on {key_list} Distribution Parameters Visit Scipy Documentation")
