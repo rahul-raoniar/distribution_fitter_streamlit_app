@@ -15,6 +15,7 @@ html_temp = """
 		</div>
 		"""
 
+# Home page
 desc_temp = """
 			### <span style="color:blue">**Purpose of Ditribution Fitter Web Application 💡**</span> 
 			Hi! i'm **```Rahul Raoniar```**. I’m a transportation researcher 🧪 and my speciality is pedestrian safety 🚶‍.
@@ -66,6 +67,7 @@ desc_temp = """
 
 			"""
 
+# About page
 about_text = """
 			### <span style="color:blue">**About Continuous Distribution Fitter Application**</span>
 			
