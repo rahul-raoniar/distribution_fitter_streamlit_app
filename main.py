@@ -134,7 +134,7 @@ about_text = """
 
 
 def load_data():
-    data_file = st.file_uploader("Upload a CSV", type=["csv"])
+    data_file = st.file_uploader("Upload a CSV File", type=["csv"])
     return data_file
 
 
