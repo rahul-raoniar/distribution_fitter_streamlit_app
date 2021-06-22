@@ -22,7 +22,7 @@ desc_temp = """
 			 The Application comprised of four sections described as follows: 
 			 
 			1. <span style="color:lightcoral">**Home** 🏡</span>: Basic Information
-			2. <span style="color:lightcoral">**EDA Section**</span> 🧮: Exploratory Data Analysis
+			2. <span style="color:lightcoral">**Exploratory Data Analysis**</span> 🧮: Exploratory Data Analysis
 			    * Descriptive Statistics
 				* Histogram Plotting (using Plotly)
 			3. <span style="color:lightcoral">**Distribution Fitting**</span> 🌈: Fitting distribution using Fitter Python Library
@@ -140,7 +140,7 @@ def load_data():
 
 def main():
     stc.html(html_temp)
-    menu = ["Home", "EDA", "DistFitting", "About"]
+    menu = ["Home", "Exploratory Data Analysis", "Distribution Fitting", "About"]
     choice = st.sidebar.selectbox("Menu", menu)
 
 
@@ -149,8 +149,8 @@ def main():
         st.markdown(desc_temp, unsafe_allow_html=True)
 
 
-    elif choice == "EDA":
-        st.header("EDA")
+    elif choice == "Exploratory Data Analysis":
+        st.header("Exploratory Data Analysis")
         data_file = load_data()
         if data_file is not None:
             df = pd.read_csv(data_file)
@@ -159,10 +159,10 @@ def main():
 
 
             submenu = st.sidebar.selectbox("Submenu",
-                                      ["Descriptive", "Plot"])
+                                      ["Descriptive Stats", "Visualization"])
 
-            if submenu == "Descriptive":
-                st.header("Descriptive stats")
+            if submenu == "Descriptive Stats":
+                st.header("Descriptive Stats")
 
                 with st.beta_expander("Data Types"):
                         st.dataframe(df.dtypes)
@@ -172,23 +172,23 @@ def main():
 
 
             else:
-                st.header("Plot")
+                st.header("Visualization")
                 with st.beta_expander("Histogram"):
 
-                        col = st.selectbox("Select a numeric column", df.columns.to_list())
-                        no_bins = st.number_input("Insert number of bins", min_value= 1, value = 10, step=1)
+                        col = st.selectbox("Select a Numeric Column", df.columns.to_list())
+                        no_bins = st.number_input("Insert Number of Bins", min_value= 1, value = 10, step=1)
                         p1 = px.histogram(df, x = col, nbins= no_bins)
                         st.plotly_chart(p1)
 
-    elif choice == "DistFitting":
-        st.header("DistFitting")
+    elif choice == "Distribution Fitting":
+        st.header("Distribution Fitting")
         data_file = load_data()
         if data_file is not None:
             df = pd.read_csv(data_file)
-            task = st.selectbox("Select Type of Distribution Fitting", ["Fit common distributions", "Fit selected distributions"])
+            task = st.selectbox("Select Type of Distribution Fitting", ["Fit Common Distributions", "Fit Selected Distributions"])
 
-            if task == "Fit common distributions":
-                col = st.selectbox("Select a numeric column", df.columns.to_list())
+            if task == "Fit Common Distributions":
+                col = st.selectbox("Select a Numeric Column", df.columns.to_list())
                 selection = st.selectbox("Best Fitted Distribution Parameter Selection Criteria", ["sumsquare_error", "aic", "bic"])
 
                 if st.button("Process"):
@@ -211,11 +211,11 @@ def main():
                     st.markdown(f"[Scipy's {key_list} Distribution Documentation Link](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.{key_list}.html)", unsafe_allow_html=True)
 
             else:
-                dists = st.multiselect("Select multiple distribution", get_distributions())
-                col = st.selectbox("Select a numeric column", df.columns.to_list())
+                dists = st.multiselect("Select One or More Distributions", get_distributions())
+                col = st.selectbox("Select a Numeric Column", df.columns.to_list())
                 selection = st.selectbox("Best Fitted Distribution Parameter Selection Criteria", ["sumsquare_error", "aic", "bic"])
                 if st.button("Process"):
-                    st.success("Top Five Distribution Summary")
+                    st.success("Top Distributions' Summary")
                     f = Fitter(df[col],
                                distributions=dists)
                     f.fit()
