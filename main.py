@@ -200,12 +200,12 @@ def main():
                     st.pyplot(fig)
 
                     st.success(f"Best Distribution Parameters Based on {selection} Sorting Criteria")
-                    st.write(f.get_best(method = selection))
+                    st.dataframe(f.get_best(method = selection))
                     best_name = f.get_best(method = selection)
                     key_name = list(best_name.keys())
                     key_list = ' '.join([str(element) for element in key_name])
-                    st.success(f"Scipy Documentation for {key_list} Distribution Parameter Details")
-                    st.markdown(f"[Scipy {key_list} Documentation Link](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.{key_list}.html)", unsafe_allow_html=True)
+                    st.success(f"For More Information on {key_list} Distribution Parameters Visit Scipy Documentation")
+                    st.markdown(f"[Scipy's {key_list} Distribution Documentation Link](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.{key_list}.html)", unsafe_allow_html=True)
 
             else:
                 dists = st.multiselect("Select multiple distribution", get_distributions())
@@ -223,13 +223,13 @@ def main():
                     st.pyplot(fig)
 
                     st.success(f"Best Distribution Parameters Based on {selection} Sorting Criteria")
-                    st.write(f.get_best(method = selection))
+                    st.dataframe(f.get_best(method = selection))
                     best_name = f.get_best(method=selection)
                     key_name = list(best_name.keys())
                     key_list = ' '.join([str(element) for element in key_name])
-                    st.success(f"Scipy Documentation for {key_list} Distribution Parameter Details")
+                    st.success(f"For More Information on {key_list} Distribution Parameters Visit Scipy Documentation")
                     st.markdown(
-                        f"[Scipy {key_list} Documentation Link](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.{key_list}.html)",
+                        f"[Scipy's {key_list} Distribution Documentation Link](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.{key_list}.html)",
                         unsafe_allow_html=True)
 
 
