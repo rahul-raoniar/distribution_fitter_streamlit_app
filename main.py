@@ -195,6 +195,7 @@ def main():
 
             if task == "Fit Common Distributions":
                 col = st.selectbox("Select a Numeric Column", df.columns.to_list())
+                bins_input = st.number_input("Insert Number of Bins", min_value=1, value=100, step=1)
                 selection = st.selectbox("Best Fitted Distribution Parameter Selection Criteria", ["sumsquare_error", "aic", "bic"])
 
                 if st.button("Process"):
@@ -204,8 +205,7 @@ def main():
                             time.sleep(2)
                             st.success("Top Five Distribution Summary Based on Sum Squared Error Sorting Criteria")
                             data = df[col].values
-                            f = Fitter(data,
-                                       distributions = get_common_distributions())
+                            f = Fitter(data, distributions = get_common_distributions(), bins = bins_input)
                             fig, ax = plt.subplots()
                             f.fit()
                             st.dataframe(f.summary())
@@ -223,14 +223,16 @@ def main():
             else:
                 dists = st.multiselect("Select One or More Distributions", get_distributions())
                 col = st.selectbox("Select a Numeric Column", df.columns.to_list())
+                bins_input = st.number_input("Insert Number of Bins", min_value=1, value=100, step=1)
                 selection = st.selectbox("Best Fitted Distribution Parameter Selection Criteria", ["sumsquare_error", "aic", "bic"])
+
                 if st.button("Process"):
                     with st.spinner('Wait for it... ⏳'):
                         time.sleep(5)
                         with st.spinner('Almost done... 👏👏'):
                             time.sleep(5)
                             st.success("Top Distributions' Summary Based on Sum Squared Error Sorting Criteria")
-                            f = Fitter(df[col], distributions = dists)
+                            f = Fitter(df[col], distributions = dists, bins = bins_input)
                             f.fit()
                             fig, ax = plt.subplots()
                             f.fit()
