@@ -147,7 +147,6 @@ def load_data():
 #         pro.progress(percent_complete + 1)
 
 
-
 def main():
     stc.html(html_temp)
     menu = ["Home", "Exploratory Data Analysis", "Distribution Fitting", "About"]
