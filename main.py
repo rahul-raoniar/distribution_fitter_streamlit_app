@@ -163,13 +163,13 @@ def main():
         if data_file is not None:
             df = pd.read_csv(data_file)
             st.write(f"The file contains {df.shape[0]} rows and {df.shape[1]} columns")
-            st.dataframe(df)
 
             submenu = st.sidebar.selectbox("Submenu",
                                       ["Descriptive Stats", "Visualization"])
 
             if submenu == "Descriptive Stats":
                 st.header("Descriptive Stats")
+                st.dataframe(df)
 
                 with st.beta_expander("Data Types"):
                         st.dataframe(df.dtypes)
@@ -202,7 +202,7 @@ def main():
                         time.sleep(5)
                         with st.spinner('Almost done... 👏👏'):
                             time.sleep(2)
-                            st.success("Top Five Distribution Summary")
+                            st.success("Top Five Distribution Summary Based on Sum Squared Error Sorting Criteria")
                             data = df[col].values
                             f = Fitter(data,
                                        distributions = get_common_distributions())
@@ -229,7 +229,7 @@ def main():
                         time.sleep(5)
                         with st.spinner('Almost done... 👏👏'):
                             time.sleep(5)
-                            st.success("Top Distributions' Summary")
+                            st.success("Top Distributions' Summary Based on Sum Squared Error Sorting Criteria")
                             f = Fitter(df[col], distributions = dists)
                             f.fit()
                             fig, ax = plt.subplots()
