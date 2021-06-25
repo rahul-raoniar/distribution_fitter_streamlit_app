@@ -78,7 +78,10 @@ def main():
                 with st.beta_expander("Histogram"):
 
                     col = st.selectbox("Select a Numeric Column", df.columns.to_list())
-                    no_bins = st.number_input("Insert Number of Bins", min_value = 1, value = 10, step = 1)
+                    no_bins = st.number_input("Insert Number of Bins",
+                                              min_value = 1,
+                                              value = 10,
+                                              step = 1)
                     p1 = px.histogram(df, x = col, nbins = no_bins)
                     st.plotly_chart(p1)
 
@@ -92,32 +95,43 @@ def main():
 
             if task == "Fit Common Distributions":
                 col = st.selectbox("Select a Numeric Column", df.columns.to_list())
-                bins_input = st.number_input("Insert Number of Bins", min_value = 1, value = 100, step = 1)
-                selection = st.selectbox("Best Fitted Distribution's Parameters Selection Criteria",
+                bins_input = st.number_input("Insert Number of Bins",
+                                             min_value = 1,
+                                             value = 100,
+                                             step = 1)
+                selection = st.selectbox("Selection Criteria",
                                          ["sumsquare_error", "aic", "bic"])
+                no_to_show = st.number_input("Number of Distributions to Show",
+                                             min_value = 1,
+                                             max_value = len(get_common_distributions()),
+                                             value = 5,
+                                             step = 1)
+
 
                 if st.button("Process"):
                     with st.spinner('Wait for it... ⏳'):
                         time.sleep(5)
                         with st.spinner('Almost done... 👏👏'):
                             time.sleep(2)
-                            st.success("Top Five Distribution Summary Based on Sum Squared Error Sorting Criteria")
+                            st.success(f"Top {no_to_show} Distributions Summary Based on {selection} Sorting Criteria")
                             data = df[col].values
                             f = Fitter(data, distributions = get_common_distributions(), bins = bins_input)
                             fig, ax = plt.subplots()
                             f.fit()
-                            st.dataframe(f.summary())
-                            download_csv(f.summary())
+                            st.dataframe(f.summary(method = selection,
+                                                   Nbest = no_to_show))
                             st.success("Fitted Distribution Plot")
                             st.pyplot(fig)
+                            download_csv(f.summary(method = selection,
+                                                   Nbest = len(get_common_distributions())).reset_index().rename(columns = {'index':'dist_name'}))
 
-                            st.success(f"Best Fitted Distribution and Parameters Based on {selection} Sorting Criteria")
+                            st.success(f"Best Fitted Distribution Parameters")
                             best_name = f.get_best(method = selection)
                             key_name = list(best_name.keys())
                             key_list = ' '.join([str(element) for element in key_name])
 
                             # Joining parameters and values
-                            st.write(f"The Best Distribution is '{key_list}' and Fitted Parameters Are:")
+                            st.write(f"The {key_list} Distribution's Fitted Parameters Are:")
                             tuple_val = f.get_best(method = selection)[key_list]
                             for i in tuple_val:
                                 param_val.append(i)
@@ -136,32 +150,43 @@ def main():
             else:
                 dists = st.multiselect("Select One or More Distributions", dist_list)
                 col = st.selectbox("Select a Numeric Column", df.columns.to_list())
-                bins_input = st.number_input("Insert Number of Bins", min_value = 1, value = 100, step = 1)
-                selection = st.selectbox("Best Fitted Distribution's Parameters Selection Criteria",
+                bins_input = st.number_input("Insert Number of Bins",
+                                             min_value = 1,
+                                             value = 100,
+                                             step = 1)
+                selection = st.selectbox("Selection Criteria",
                                          ["sumsquare_error", "aic", "bic"])
+                no_to_show = st.number_input("Number of Selected Distributions to Show",
+                                             min_value = 1,
+                                             max_value = len(dists),
+                                             value = 1,
+                                             step = 1)
+
 
                 if st.button("Process"):
                     with st.spinner('Wait for it... ⏳'):
                         time.sleep(5)
                         with st.spinner('Almost done... 👏👏'):
                             time.sleep(5)
-                            st.success("Top Distributions' Summary Based on Sum Squared Error Sorting Criteria")
+                            st.success(f"Top {no_to_show} Distributions Summary Based on {selection} Sorting Criteria")
                             f = Fitter(df[col], distributions = dists, bins = bins_input)
                             f.fit()
                             fig, ax = plt.subplots()
                             f.fit()
-                            st.dataframe(f.summary())
-                            download_csv(f.summary())
+                            st.dataframe(f.summary(method = selection,
+                                                   Nbest = no_to_show))
                             st.success("Fitted Distribution Plot")
                             st.pyplot(fig)
+                            download_csv(f.summary(method = selection,
+                                                   Nbest = len(dists)).reset_index().rename(columns = {'index':'dist_name'}))
 
-                            st.success(f"Best Fitted Distribution and Parameters Based on {selection} Sorting Criteria")
+                            st.success(f"Best Fitted Distribution Parameters")
                             best_name = f.get_best(method=selection)
                             key_name = list(best_name.keys())
                             key_list = ' '.join([str(element) for element in key_name])
 
                             # Joining parameters and values
-                            st.write(f"The Best Distribution is '{key_list}' and Fitted Parameters Are:")
+                            st.write(f"The {key_list} Distribution's Fitted Parameters Are:")
                             tuple_val = f.get_best(method = selection)[key_list]
                             for i in tuple_val:
                                 param_val.append(i)
