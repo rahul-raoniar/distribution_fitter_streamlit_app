@@ -6,6 +6,7 @@ from fitter import Fitter, get_common_distributions, get_distributions
 import matplotlib.pyplot as plt
 import pandas as pd
 import time
+import base64
 
 
 from all_params import dist_list, dist_parm_dict
@@ -14,15 +15,33 @@ from all_texts import html_temp, desc_temp, about_text
 
 
 param_val = []
+timestr = time.strftime("%Y%m%d-%H%M%S")
+
+
 
 def load_data():
-    data_file = st.file_uploader("Upload a CSV File", type=["csv"])
+    data_file = st.file_uploader("Upload a CSV File", type = ["csv"])
     return data_file
+
+
 
 def search_parm(keyword):
     for key in dist_parm_dict:
         if key == keyword:
             return dist_parm_dict[key]
+
+
+
+# Function to download
+def download_csv(data):
+    csvfile = data.to_csv(index=False)
+    b64 = base64.b64encode(csvfile.encode()).decode()
+    new_filename = "dist_summary_{}_.csv".format(timestr)
+    st.markdown("### **⬇️Download Fitted Distributions' Summary 🎈🎈**")
+    href = f'<a href="data:file/csv;base64,{b64}" download="{new_filename}">Download CSV file!</a>'
+    st.markdown(href, unsafe_allow_html = True)
+
+
 
 
 def main():
@@ -32,7 +51,7 @@ def main():
 
     if choice == "Home":
         st.header("Home")
-        st.markdown(desc_temp, unsafe_allow_html=True)
+        st.markdown(desc_temp, unsafe_allow_html = True)
 
     elif choice == "Exploratory Data Analysis":
         st.header("Exploratory Data Analysis")
@@ -59,8 +78,8 @@ def main():
                 with st.beta_expander("Histogram"):
 
                     col = st.selectbox("Select a Numeric Column", df.columns.to_list())
-                    no_bins = st.number_input("Insert Number of Bins", min_value=1, value=10, step=1)
-                    p1 = px.histogram(df, x=col, nbins=no_bins)
+                    no_bins = st.number_input("Insert Number of Bins", min_value = 1, value = 10, step = 1)
+                    p1 = px.histogram(df, x = col, nbins = no_bins)
                     st.plotly_chart(p1)
 
     elif choice == "Distribution Fitting":
@@ -73,8 +92,8 @@ def main():
 
             if task == "Fit Common Distributions":
                 col = st.selectbox("Select a Numeric Column", df.columns.to_list())
-                bins_input = st.number_input("Insert Number of Bins", min_value=1, value=100, step=1)
-                selection = st.selectbox("Best Fitted Distribution Parameter Selection Criteria",
+                bins_input = st.number_input("Insert Number of Bins", min_value = 1, value = 100, step = 1)
+                selection = st.selectbox("Best Fitted Distribution's Parameters Selection Criteria",
                                          ["sumsquare_error", "aic", "bic"])
 
                 if st.button("Process"):
@@ -84,10 +103,11 @@ def main():
                             time.sleep(2)
                             st.success("Top Five Distribution Summary Based on Sum Squared Error Sorting Criteria")
                             data = df[col].values
-                            f = Fitter(data, distributions = get_common_distributions(), bins=bins_input)
+                            f = Fitter(data, distributions = get_common_distributions(), bins = bins_input)
                             fig, ax = plt.subplots()
                             f.fit()
                             st.dataframe(f.summary())
+                            download_csv(f.summary())
                             st.success("Fitted Distribution Plot")
                             st.pyplot(fig)
 
@@ -117,7 +137,7 @@ def main():
                 dists = st.multiselect("Select One or More Distributions", dist_list)
                 col = st.selectbox("Select a Numeric Column", df.columns.to_list())
                 bins_input = st.number_input("Insert Number of Bins", min_value = 1, value = 100, step = 1)
-                selection = st.selectbox("Best Fitted Distribution Parameter Selection Criteria",
+                selection = st.selectbox("Best Fitted Distribution's Parameters Selection Criteria",
                                          ["sumsquare_error", "aic", "bic"])
 
                 if st.button("Process"):
@@ -131,6 +151,7 @@ def main():
                             fig, ax = plt.subplots()
                             f.fit()
                             st.dataframe(f.summary())
+                            download_csv(f.summary())
                             st.success("Fitted Distribution Plot")
                             st.pyplot(fig)
 
@@ -174,7 +195,7 @@ def main():
 
     else:
         st.header("About")
-        st.markdown(about_text, unsafe_allow_html=True)
+        st.markdown(about_text, unsafe_allow_html = True)
 
 
 if __name__ == "__main__":
