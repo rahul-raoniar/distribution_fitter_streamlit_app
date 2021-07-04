@@ -1,12 +1,21 @@
 The distribution fitter application will help you compare multiple distributions and find the best one that fits your data. The application comprised of four sections described as follows:
 
 
-### 1. Home
+1. <span style="color:lightcoral">**Home** 🏡</span>: Basic Information
+2. <span style="color:lightcoral">**Exploratory Data Analysis**</span> 🧮: Exploratory Data Analysis
+			    * Descriptive Statistics
+				* Histogram Plotting (using Plotly)
+ 3. <span style="color:lightcoral">**Distribution Fitting**</span> 🌈: Fitting distribution using Fitter Python Library
+			    * Fitting Common Distributions
+				* Fitting Distributions by Manual Selection
+4. <span style="color:lightcoral">**About**</span> 📑: About the Application
+
+### <span style="color:blue">1. Home</span>
 The home page provides a basic information regarding the application. Additionally, it provides developer information and site related details.
 
 		Github Page: https://github.com/cokelaer/fitter
 
-### 2. Exploratory Data Analysis
+### <span style="color:blue">2. Exploratory Data Analysis</span>
 The ```Exploratory Data Analysis``` section comprised of two subsections, ```Descriptive Stats``` and ```Visualization```.
 
 **2.1 Descriptive Stats:**
@@ -16,7 +25,7 @@ A descriptive statistical analysis part has been added to check the data types a
 **2.2 Visualization:** 
 Before you start fitting various distributions it is often recommended to plot a histogram, which will help you understand overall distribution your data follows. This will bring down the number of distributions you might need for comparision which eventually save you time.
 
-### 3. Distribution Fitting
+### <span style="color:blue">3. Distribution Fitting</span>
 The ```fitter``` class of ```fitter``` library in the backend uses the Scipy library which supports 80 distributions. The Fitter class will scan common distributions or manually selected distributions, call the fit function for you, ignoring those that fail or run forever and finally give you a summary of the best distributions in the sense of sum of the square errors.  
 
 In this section two separate distribution fitting methods has been deployed which are described as follows:  
@@ -35,5 +44,5 @@ In this section two separate distribution fitting methods has been deployed whic
 
 * Here also you can select best distribution parameters by sorting the fitting error based on ```sumsquare_error```, ```aic``` or ```bic``` criteria
 
-### 4. About Application
+### <span style="color:blue">4. About Application</span>
 The about section provides a breif description of the application's functionality.  
