@@ -48,7 +48,7 @@ desc_temp = """
 
 			   <span style="color:darkred">**Rahul Raoniar**</span>
 
-			   Connect with me on 🌍 [Linkedin](https://linkedin.com/in/rahul-raoniar) and [Medium](https://medium.com/@rahul.raoniar)
+			   Connect with me on 🌍 [Linkedin](https://linkedin.com/in/rahul-raoniar) and [Medium](https://medium.com/@rahulraoniar)
 
 
 
