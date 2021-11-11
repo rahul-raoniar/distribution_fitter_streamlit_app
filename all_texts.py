@@ -38,7 +38,7 @@ desc_temp = """
 			   After using the fitter library I realized that it 
 			   is an underrated library, and students and researchers should know about it. For that reason, I wrote the following blog.
 
-			   [Finding the Best Distribution that Fits Your Data using Python’s Fitter Library](https://towardsdatascience.com/finding-the-best-distribution-that-fits-your-data-using-pythons-fitter-library-319a5a0972e9)
+			   [Finding the Best Distribution that Fits Your Data using Python’s Fitter Library](https://medium.com/the-researchers-guide/finding-the-best-distribution-that-fits-your-data-using-pythons-fitter-library-319a5a0972e9)
 
 			   Later, I developed this app for making distribution fitting easy and free for everyone.
 
