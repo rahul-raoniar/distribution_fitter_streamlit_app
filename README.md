@@ -15,7 +15,7 @@ The distribution fitter application will help you compare multiple distributions
 		# Activate the environment
 		conda activate streamlit_env
 
-		# Change the directory where you stored/extracted github repository files
+		# Set directory path where you have stored/extracted github repository 
 		cd "directory path"
 
 		# Run the following file on your Anaconda/Miniconda environment
