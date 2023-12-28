@@ -1,5 +1,32 @@
-The distribution fitter application will help you compare multiple distributions and find the best one that fits your data. The application comprised of four sections described as follows:
+The distribution fitter application will help you compare multiple distributions and find the best one that fits your data. 
 
+## Steps to run the distribution fitter application
+1. The app works fine with Python 3.6
+2. Create an anaconda/miniconda environment with Python 3.6 and install the packages/libraries using the requirements.txt
+
+		# Install Anaconda/Miniconda distribution
+		# open anaconda prompt from start menu
+
+		# Create an Anaconda/Miniconda environment
+		# Here I have created a conda environment called 'streamlit_env' 
+		# Create the environment with python 3.6
+		conda create --name streamlit_env python=3.6
+
+		# Activate the environment
+		conda activate streamlit_env
+
+		# Change the directory where you stored/extracted github repository files
+		cd "directory path"
+
+		# Run the following file on your Anaconda/Miniconda environment
+		pip install -r requirements.txt
+
+		# Next run the main.py file
+		streamlit run main.py
+
+		# Enjoy the streamlit-based distribution fitter app😊
+
+## The application comprised of four sections described as follows:
 
 1. <span style="color:lightcoral">**Home** 🏡</span>: Basic Information
 2. <span style="color:lightcoral">**Exploratory Data Analysis**</span> 🧮: Exploratory Data Analysis
